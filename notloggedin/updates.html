@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 	<link type="text/css" rel="stylesheet" href="../main.css"/>
 	<link type="text/css" rel="stylesheet" href="../frontpage.css">
+	<link type="text/css" rel="stylesheet" href="../body.css">
 	<script type="text/javascript" src="script.js"></script>
 </head>
 <body style="background-image:url('http://rockyfordco.com/wp-content/uploads/2016/05/soccer.jpg');
@@ -19,6 +20,46 @@
 	        <li><div id="login"><a href="login.html">Login</a></div></li>
 	    </ul>
     </div>
+    
+    <div id="icon"><img src="../res/AppPageCorner.png" alt="Athleteam" style="width:256px;height:256px;"></div>
+    
+    <div id="main_body">
+        <h1 id="main_body_title">Updates</h1>
+        <p id="main_body_text">Athleteam has just launched! Sign up to receive updates about local games!</p>
+    </div>
+    
+    <div id="signInOut">
+    	
+    </div>
+    
+    <script type="text/javascript">
+    	var visible = false;
+    	var opacity = 0;
+    	document.getElementById("login").addEventListener("click", function(){
+    		visible = !visible;
+    		document.getElementById("login").style.visibility = (visible ? "" : "hidden");
+    		if(visible){
+    			fadeIn("login");
+    		}else{
+    			fadeOut("login");
+    		}
+    	});
+    	
+    	function fadeIn(id){
+    		if(opacity >= 1){
+    			opacity = 1;
+    			document.getElementById(id).style.opacity = opacity;
+    		}else{
+    			opacity += 0.01;
+    			document.getElementById(id).style.opacity = opacity;
+    			setTimeout(function(){fadeIn(id)}, 10);
+    		}
+    	}
+    	
+    	function fadeOut(id){
+    		
+    	}
+    </script>
     
 </body>
 </html>
