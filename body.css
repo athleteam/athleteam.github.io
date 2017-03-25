@@ -1,8 +1,9 @@
 #main_body{
+    position:absolute;
+    top:25%;
+    left:0;
+    height:75%;
+    width:100%;
     background-color:white;
-    
-}
-
-#main_body #main_body_title{
-    color:black;
+    font-family:arial;
 }
