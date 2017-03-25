@@ -12,7 +12,7 @@
     		 background-repeat:no-repeat;">
 	<div id="header">
 	    <ul id="nav_list">
-	        <li><div><a href="notloggedin/index.html">Home</a></div></li>
+	        <li><div><a href="#">Home</a></div></li>
 	        <li><div><a href="notloggedin/updates.html">Updates</a></div></li>
 	        <li><div><a href="notloggedin/about.html">About</a></div></li>
 	        <li><div id="login"><a href="#">Login</a></div></li>
@@ -30,9 +30,9 @@
     		<span style="font-size:30px">Sign In</span>
     		<br/><br/><br/>
     		<form>
-    			<input type="text" name="username" placeholder="Username"/>
+    			<input type="text" name="username" placeholder="Username" id="user"/>
     			<br/><br/>
-    			<input type="password" name="psw" placeholder="Password"/>
+    			<input type="password" name="psw" placeholder="Password" id="pass"/>
     		</form>
     	</div>
     	<div id="register">
@@ -75,6 +75,20 @@
     			opacity -= 0.1;
     			document.getElementById(id).style.opacity = opacity;
     			setTimeout(function(){fadeOut(id);}, 10);
+    		}
+    	}
+    	
+    	document.getElementById("user").addEventListener("keydown", function(e){
+    		if(e.keyCode == 13){checkCred();}
+    	});
+    	
+    	document.getElementById("pass").addEventListener("keydown", function(e){
+    		if(e.keyCode == 13){checkCred();}
+    	});
+    	
+    	function checkCred(){
+    		if(document.getElementById("user").value == "root" && document.getElementById("pass").value == "toor"){
+    			window.location.replace("loggedin/profile.html");
     		}
     	}
     </script>

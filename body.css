@@ -4,7 +4,24 @@
     left:0;
     height:75%;
     width:100%;
-    background-color:#adccb3;
+    background-color:#a2bfa8;
     color:white;
     font-family:arial;
+}
+
+#main_body_table{
+    width:750px;
+    table-layout:fixed;
+    
+}
+
+#main_body_title{
+    padding-left:20px;
+    font-size:30px;
+    width:150px;
+}
+
+#main_body_text{
+    padding-left:20px;
+    font-size:18px;
 }

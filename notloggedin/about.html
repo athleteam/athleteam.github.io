@@ -22,27 +22,43 @@
     
     <div id="icon"><img src="../res/AppPageCorner.png" alt="Athleteam" style="width:256px;height:256px;"></div>
     
-    <break></break>
-    <break></break>
+    <br/><br/>
     <div id="main_body">
         <h1 id="main_body_title">About Us</h1>
-        <p id="main_body_text">Athleteam was created blah...</p>
+        <p id="main_body_text">Athleteam was created by a group of people who wanted to solve a problem that has been around since the creation of sports. 
+        On the internet, it can be hard to find other people who have the same athletic interests. Sifting through online groups and trying to find people
+        willing to start a game can be tough. Athleteam makes it easy to connect with other people who want to start a pickup game. Simply log on to our app 
+        and it will show a filtered list of games you might be interested in in your area. Want to start a game? That's easy, too. Just input some basic game information
+        and you are ready to go.</p>
     </div>
     
     <div id="signInOut">
-    	
+    	<div id="signin">
+    		<span style="font-size:30px">Sign In</span>
+    		<br/><br/><br/>
+    		<form>
+    			<input type="text" name="username" placeholder="Username" id="user"/>
+    			<br/><br/>
+    			<input type="password" name="psw" placeholder="Password" id="pass"/>
+    		</form>
+    	</div>
+    	<div id="register">
+    		<span>Don't Have an Account?</span>
+    		<a href="register.html"><div><span>Register Now</span></div><a/>
+    	</div>
     </div>
-    
     <script type="text/javascript">
     	var visible = false;
     	var opacity = 0;
     	document.getElementById("login").addEventListener("click", function(){
     		visible = !visible;
-    		document.getElementById("login").style.visibility = (visible ? "" : "hidden");
     		if(visible){
-    			fadeIn("login");
+    			opacity = 0;
+    			document.getElementById("signInOut").style.visibility = "";
+    			fadeIn("signInOut");
     		}else{
-    			fadeOut("login");
+    			opacity = 1;
+    			fadeOut("signInOut");
     		}
     	});
     	
@@ -51,14 +67,36 @@
     			opacity = 1;
     			document.getElementById(id).style.opacity = opacity;
     		}else{
-    			opacity += 0.01;
+    			opacity += 0.1;
     			document.getElementById(id).style.opacity = opacity;
-    			setTimeout(function(){fadeIn(id)}, 10);
+    			setTimeout(function(){fadeIn(id);}, 10);
     		}
     	}
     	
     	function fadeOut(id){
-    		
+    		if(opacity <= 0){
+    			opacity = 0;
+    			document.getElementById(id).style.opacity = opacity;
+    			document.getElementById("signInOut").style.visibility = "hidden";
+    		}else{
+    			opacity -= 0.1;
+    			document.getElementById(id).style.opacity = opacity;
+    			setTimeout(function(){fadeOut(id);}, 10);
+    		}
+    	}
+    	
+    	document.getElementById("user").addEventListener("keydown", function(e){
+    		if(e.keyCode == 13){checkCred();}
+    	});
+    	
+    	document.getElementById("pass").addEventListener("keydown", function(e){
+    		if(e.keyCode == 13){checkCred();}
+    	});
+    	
+    	function checkCred(){
+    		if(document.getElementById("user").value == "root" && document.getElementById("pass").value == "toor"){
+    			window.location.replace("../loggedin/profile.html");
+    		}
     	}
     </script>
 </body>

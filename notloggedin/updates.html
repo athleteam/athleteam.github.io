@@ -7,17 +7,16 @@
 	<link type="text/css" rel="stylesheet" href="../main.css"/>
 	<link type="text/css" rel="stylesheet" href="../frontpage.css">
 	<link type="text/css" rel="stylesheet" href="../body.css">
-	<script type="text/javascript" src="script.js"></script>
 </head>
-<body style="background-image:url('http://rockyfordco.com/wp-content/uploads/2016/05/soccer.jpg');
+<body style="background-image:url('https://rockyfordco.com/wp-content/uploads/2016/05/soccer.jpg');
     		 background-size:100%;
     		 background-repeat:no-repeat;">
 	<div id="header">
 	    <ul id="nav_list">
-	        <li><div><a href="index.html">Home</a></div></li>
-	        <li><div><a href="updates.html">Updates</a></div></li>
+	        <li><div><a href="../index.html">Home</a></div></li>
+	        <li><div><a href="#">Updates</a></div></li>
 	        <li><div><a href="about.html">About</a></div></li>
-	        <li><div id="login"><a href="login.html">Login</a></div></li>
+	        <li><div id="login"><a href="#">Login</a></div></li>
 	    </ul>
     </div>
     
@@ -29,19 +28,32 @@
     </div>
     
     <div id="signInOut">
-    	
+    	<div id="signin">
+    		<span style="font-size:30px">Sign In</span>
+    		<br/><br/><br/>
+    		<form>
+    			<input type="text" name="username" placeholder="Username" id="user"/>
+    			<br/><br/>
+    			<input type="password" name="psw" placeholder="Password" id="pass"/>
+    		</form>
+    	</div>
+    	<div id="register">
+    		<span>Don't Have an Account?</span>
+    		<a href="register.html"><div><span>Register Now</span></div><a/>
+    	</div>
     </div>
-    
     <script type="text/javascript">
     	var visible = false;
     	var opacity = 0;
     	document.getElementById("login").addEventListener("click", function(){
     		visible = !visible;
-    		document.getElementById("login").style.visibility = (visible ? "" : "hidden");
     		if(visible){
-    			fadeIn("login");
+    			opacity = 0;
+    			document.getElementById("signInOut").style.visibility = "";
+    			fadeIn("signInOut");
     		}else{
-    			fadeOut("login");
+    			opacity = 1;
+    			fadeOut("signInOut");
     		}
     	});
     	
@@ -50,14 +62,36 @@
     			opacity = 1;
     			document.getElementById(id).style.opacity = opacity;
     		}else{
-    			opacity += 0.01;
+    			opacity += 0.1;
     			document.getElementById(id).style.opacity = opacity;
-    			setTimeout(function(){fadeIn(id)}, 10);
+    			setTimeout(function(){fadeIn(id);}, 10);
     		}
     	}
     	
     	function fadeOut(id){
-    		
+    		if(opacity <= 0){
+    			opacity = 0;
+    			document.getElementById(id).style.opacity = opacity;
+    			document.getElementById("signInOut").style.visibility = "hidden";
+    		}else{
+    			opacity -= 0.1;
+    			document.getElementById(id).style.opacity = opacity;
+    			setTimeout(function(){fadeOut(id);}, 10);
+    		}
+    	}
+    	
+    	document.getElementById("user").addEventListener("keydown", function(e){
+    		if(e.keyCode == 13){checkCred();}
+    	});
+    	
+    	document.getElementById("pass").addEventListener("keydown", function(e){
+    		if(e.keyCode == 13){checkCred();}
+    	});
+    	
+    	function checkCred(){
+    		if(document.getElementById("user").value == "root" && document.getElementById("pass").value == "toor"){
+    			window.location.replace("../loggedin/profile.html");
+    		}
     	}
     </script>
     
