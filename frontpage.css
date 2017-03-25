@@ -1,0 +1,28 @@
+#anouncement{
+    font-family:Arial;
+    font-size:30px;
+    text-align:center;
+    color:white;
+    position:absolute;
+    margin:auto;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    width:40%;
+    height:30%;
+    text-shadow:1px 1px 5px black;
+}
+
+#icon{
+    position:absolute;
+    margin:auto;
+    text-align:30px;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    width:40%;
+    height:30%;
+    text-shadow:1px 1px 5px black;
+}
